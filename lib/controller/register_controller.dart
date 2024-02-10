@@ -13,7 +13,7 @@ class RegisterController extends GetxController{
   final nameController = TextEditingController();
   final emailController = TextEditingController();
 
-  void registerMethod(String name, String email) async{
+  void registerMethod(String name, String email, BuildContext context) async{
     try{
       var response  = await http.post(Uri.parse('https://api-coolbro.gvmtechnologies.com/auth/register'),
           body: jsonEncode({
@@ -32,8 +32,8 @@ class RegisterController extends GetxController{
       print(response.statusCode);
       print(response.body);
       if(response.statusCode == 200){
-        Get.snackbar('SuccessFully', 'Goto verify',backgroundColor: Colors.white,colorText: Colors.black);
-        Get.to(VerificationScreen(id: data['User']['ID'],));
+        Get.snackbar('SuccessFully', 'Welcome Home Screen',backgroundColor: Colors.white,colorText: Colors.black);
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
       }else{
         print('not respone of 200');
       }

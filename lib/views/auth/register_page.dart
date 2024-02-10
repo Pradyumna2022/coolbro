@@ -75,7 +75,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             focusedBorder: OutlineInputBorder(),
                             errorBorder: OutlineInputBorder(),
                             border: OutlineInputBorder(),
-                            label: Text("Name")),
+                            hintText: "Name"
+                        ),
                       ),
                       SizedBox(
                         height: 10,
@@ -94,7 +95,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             focusedBorder: OutlineInputBorder(),
                             errorBorder: OutlineInputBorder(),
                             border: OutlineInputBorder(),
-                            label: Text("Email")),
+                            hintText: "Email"),
                       ),
                     ],
                   ),
@@ -105,8 +106,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 MaterialButton(
                   onPressed: () {
                    if(formkey.currentState!.validate()){
+
                      registerController.registerMethod(registerController.nameController.text.toString(),
-                         registerController.emailController.text.toString());
+                         registerController.emailController.text.toString(),context);
                    }
                   },
                   height: 55,

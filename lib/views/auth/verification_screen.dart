@@ -6,8 +6,8 @@ import 'package:pinput/pinput.dart';
 import '../../controller/register_controller.dart';
 
 class VerificationScreen extends StatefulWidget {
-  final int id;
-  const VerificationScreen({super.key, required this.id});
+  final int verificationId;
+  const VerificationScreen({super.key, required this.verificationId});
 
   @override
   State<VerificationScreen> createState() => _VerificationScreenState();
@@ -22,7 +22,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
     final defaultPinTheme = PinTheme(
       width: 56,
       height: 56,
-      textStyle: TextStyle(fontSize: 20, color: Color.fromRGBO(30, 60, 87, 1), fontWeight: FontWeight.w600),
+      textStyle: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
       decoration: BoxDecoration(
         border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
         borderRadius: BorderRadius.circular(20),
@@ -80,11 +80,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                   defaultPinTheme: defaultPinTheme,
                   focusedPinTheme: focusedPinTheme,
                   submittedPinTheme: submittedPinTheme,
-                  validator: (s) {
-                    return s == '2222' ? null : 'Pin is incorrect';
-                  },
+
                   pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                  showCursor: true,
+                  // showCursor: true,
                   onCompleted: (pin) => print(pin),
                 ),
                 SizedBox(
@@ -92,7 +90,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 ),
                 MaterialButton(
                   onPressed: () {
-                    verificationController.verificationMethod(widget.id, verificationController.verifyController.text.toString());
+                    print(widget.verificationId.toString()+'THIS IS VERIFICATION ID ON VERIFICTAION SCREEN');
+                    verificationController.verificationMethod(widget.verificationId, int.parse(verificationController.verifyController.text,),context);
                   },
                   height: 55,
                   child: Center(

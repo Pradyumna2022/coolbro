@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                         focusedBorder: OutlineInputBorder(),
                         errorBorder: OutlineInputBorder(),
                         border: OutlineInputBorder(),
-                        label: Text("Email")),
+                        hintText: 'Email'),
                   ),
                 ),
                 SizedBox(
@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                 MaterialButton(
                   onPressed: () {
                     if(formkey.currentState!.validate()){
-                      loginController.loginMethod(loginController.emailController.text.toString(),);
+                      loginController.loginMethod(loginController.emailController.text.toString(),context);
                     }
                   },
                   height: 55,
